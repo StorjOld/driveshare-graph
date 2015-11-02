@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+    <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+    <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+    </head>
+    <body>
+    	<div id="TB" name="TB" title="TB storage capacity">
+            {{ line_chart.render()|safe }}
+        </div>
+        <br />
+        <div id="avg_GB" name="GB" title="GB per farmer">
+            <h2>Current average capacity per farmer is {{ avg_GB }} GB<h2>
+        </div>
+        <br />
+        <div id="farmers" name="farmers" title="number of farmers">
+            {{ farmers_chart.render()|safe }}
+        </div>
+        <br />
+        <div id="minmax" name="minmax" title="min and max number of farmers each day">
+            {{ minmax_chart.render()|safe }}
+        </div>
+        <br />
+        <div id="histogram" name="histogram" title="Uptime histogram">
+            {{ uptime_histogram.render()|safe }}
+        </div>
+        <br />
+        <div id="uptime" name="uptime" title="average uptime percentage">
+            <h2>Average uptime percentage of farmers who were online during the past week is {{ uptime }}%</h2> 
+        </div>
+    </body>
+</html>

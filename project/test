@@ -1,0 +1,12 @@
+import sqlite3
+from pymongo import MongoClient
+import uptime
+
+conn = sqlite3.connect('network.db')
+cursor = conn.cursor()
+
+connection = MongoClient('localhost', 27017)
+collection = connection['GroupB']['farmers']
+
+uptime.create_farmers_table(cursor)
+uptime.init_farmers_table(conn, cursor, collection)
