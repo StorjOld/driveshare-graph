@@ -37,21 +37,18 @@ def init_farmers_table(conn, cursor, collection):
     first_dates = {}
     last_dates = {}
     uptimes = {}
-    last_seen_dates = {}
     previous_time = 0
     for doc in collection.find({}).sort('time', 1):
         doc_time = time.mktime(doc['time'].timetuple())
         for farmer in doc['farmers']:
             payout_address = farmer['payout_addr']
             if (payout_address in first_dates):
-                if last_seen_dates[payout_address] == previous_time:
+                if last_dates[payout_address] == previous_time:
                     uptimes[payout_address] += doc_time - previous_time
                 last_dates[payout_address] = doc_time
-                last_seen_dates[payout_address] = doc_time
             else:
                 first_dates[payout_address] = doc_time
                 last_dates[payout_address] = doc_time
-                last_seen_dates[payout_address] = doc_time
                 uptimes[payout_address] = 0
         previous_time = doc_time
 
