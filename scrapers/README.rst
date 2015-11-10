@@ -12,16 +12,16 @@ Setup
 How to run on MacOSX:
 ::
 	brew install python git 
-	git clone https://github.com/Andrew-Kim/GroupB-Scripts.git 
-	cd GroupB-Scripts
+	git clone https://github.com/Storj/driveshare-graph.git
+	cd driveshare-graph/scrapers
 	pip install -r requirements.txt
 	./scrapeAPI.sh
 
 How to run on Ubuntu:
 ::
 	apt-get install python git python-pip python-dev build-essential
-	git clone https://github.com/Andrew-Kim/GroupB-Scripts.git
-	cd GroupB-Scripts
+	git clone https://github.com/Storj/driveshare-graph.git
+	cd driveshare-graph/scrapers
 	pip install -r requirements.txt
 	./scrapeAPI.sh
 	
