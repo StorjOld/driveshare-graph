@@ -14,6 +14,8 @@ Currently displays:
 
 ###Setup
 ```
+git clone https://github.com/Storj/driveshare-graph.git
+cd driveshare-graph
 sudo apt-get install sqlite3 gunicorn tmux
 pip install -r requirements.txt
 ```
