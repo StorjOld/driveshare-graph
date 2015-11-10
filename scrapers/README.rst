@@ -39,7 +39,7 @@ Connecting to database using python:
 #####
 Copying the Database
 ##### 
-Ubuntu:
+
 ::
 	cd ~
 	mongodump --db GroupB
