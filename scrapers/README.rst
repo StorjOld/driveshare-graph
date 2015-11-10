@@ -40,6 +40,7 @@ Connecting to database using python:
 Copying the Database
 ##### 
 
+How to mongodump:
 ::
 	cd ~
 	mongodump --db GroupB
