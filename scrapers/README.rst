@@ -43,6 +43,7 @@ Copying the Database
 ::
 	cd ~
 	mongodump --db GroupB
+	
 This creates a directory named dump in the home directory. Copy the dump directory to the machine on which you want to store the GroupB data. On that machine, run the following command in the same directory that the dump directory is located in:
 ::
 	mongorestore dump 
