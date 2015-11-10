@@ -16,6 +16,7 @@ How to run on MacOSX:
 	cd GroupB-Scripts
 	pip install -r requirements.txt
 	./scrapeAPI.sh
+
 How to run on Ubuntu:
 ::
 	apt-get install python git python-pip python-dev build-essential
@@ -33,3 +34,16 @@ Connecting to database using python:
 	connection = MongoClient('localhost', 27017)
 	farmers_collection = connection['GroupB']['farmers']
 	total_storage_collection = connection['GroupB']['totalStorage']
+
+
+#####
+Copying the Database
+##### 
+Ubuntu:
+::
+	cd ~
+	mongodump --db GroupB
+This creates a directory named dump in the home directory. Copy the dump directory to the machine on which you want to store the GroupB data. On that machine, run the following command in the same directory that the dump directory is located in:
+::
+	mongorestore dump 
+
