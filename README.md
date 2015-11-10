@@ -11,14 +11,39 @@ Currently displays:
 
 ## How to set up and deploy website
 
-### Ubuntu
+### Ubuntu Digital Ocean Node
 
 **Setup**
-`sudo apt-get install sqlite3 gunicorn
-`pip install -r requirements.txt
+```
+sudo apt-get install sqlite3 gunicorn tmux
+pip install -r requirements.txt
+```
+
+**Setup MongoDB**
+For instructions on how to migrate/copy the existing MongoDB, look at the README in the scrapers folder. After restoring the MongoDB on a machine, run the scrapers in order to continue collecting data on farmers. 
+```
+tmux attach -t crawler
+cd ~/driveshare-graph/scrapers
+./scrapeAPI.sh
+```
+Detach the tmux session (ctrl-b then d) after starting the scrapeAPI script. 
 
 **Deploy**
-`cd project
-`gunicorn -b 0.0.0.0:80 --workers=4 app:app
+```
+tmux attach -t driveshare-graph
+cd project
+gunicorn -b 0.0.0.0:80 --workers=4 app:app
+```
+Detach the tmux session after running gunicorn.
 
+Then, create a new tmux session that will update the network.db every 30 seconds.
+```
+tmux attach -t updateSQL
+cd project
+python updateSQL.py
+```
+Detach the tmux session after beginning the updateSQL script. 
 
+## Databases
+
+network.db in the project directory is a sqlite database containing duration and uptime information for each payout address. 
