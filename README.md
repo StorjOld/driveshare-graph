@@ -1,6 +1,6 @@
 # driveshare-graph
 
-Go to [graph.driveshare.org](graph.driveshare.org) to see network statistics. Built using the Flask framework. MongoDB contains raw data on farmers. Data in MongoDB is collected from the farmers and totalStorage scrapy scripts which are located in the scrapers directory. 
+Go to [graph.driveshare.org](http://graph.driveshare.org) to see network statistics. Built using the Flask framework. MongoDB contains raw data on farmers. Data in MongoDB is collected from the farmers and totalStorage scrapy scripts which are located in the scrapers directory. 
 
 Currently displays:
 * total storage capacity over time 
