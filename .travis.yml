@@ -6,6 +6,13 @@ install:
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
 
+services:
+  - mongodb
+
+before_script: 
+ - mongorestore farmer_dump
+ - mongorestore storage_dump
+
 script:
   - coverage run --source="driveshare-graph" setup.py test
 
