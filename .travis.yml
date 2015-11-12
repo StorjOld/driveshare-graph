@@ -14,7 +14,7 @@ before_script:
  - mongorestore storage_dump
 
 script:
-  - coverage run --source="driveshare-graph" setup.py test
+  - coverage run --source="driveshare_graph" setup.py test
 
 after_success:
   - coveralls
