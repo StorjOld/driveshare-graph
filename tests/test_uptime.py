@@ -24,4 +24,4 @@ class Uptime(unittest.TestCase):
         avg_uptime = uptime.compute_average_uptime(self.cursor)
         self.assertTrue(isinstance(avg_uptime, float))
 
-    
+
