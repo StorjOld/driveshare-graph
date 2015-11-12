@@ -41,15 +41,15 @@ def init_farmers_table(conn, cursor, collection):
     for doc in collection.find({}).sort('time', 1):
         doc_time = time.mktime(doc['time'].timetuple())
         for farmer in doc['farmers']:
-            payout_address = farmer['payout_addr']
-            if (payout_address in first_dates):
-                if last_dates[payout_address] == previous_time:
-                    uptimes[payout_address] += doc_time - previous_time
-                last_dates[payout_address] = doc_time
+            btc_address = farmer['btc_addr']
+            if (btc_address in first_dates):
+                if last_dates[btc_address] == previous_time:
+                    uptimes[btc_address] += doc_time - previous_time
+                last_dates[btc_address] = doc_time
             else:
-                first_dates[payout_address] = doc_time
-                last_dates[payout_address] = doc_time
-                uptimes[payout_address] = 0
+                first_dates[btc_address] = doc_time
+                last_dates[btc_address] = doc_time
+                uptimes[btc_address] = 0
         previous_time = doc_time
 
     for key, value in first_dates.iteritems():
@@ -101,7 +101,7 @@ def update_farmers_table(conn, cursor, collection):
     for doc in collection.find({'time': {'$gt': last_date}}).sort('time', 1):
         doc_time = timestamp_from_dt(doc['time'])
         for farmer in doc['farmers']:
-            address = farmer['payout_addr']
+            address = farmer['btc_addr']
             if address_in_db(cursor, address):
                 cursor.execute('''SELECT MAX(last_date) FROM farmers WHERE
                                   address=?''', (str(address),))
@@ -185,7 +185,7 @@ def uptime_distribution(cursor, collection):
     """ 
     begin_date = dt.datetime.now() - timedelta(days = 7)
     farmers = collection.find({'time': {'$gte': begin_date}}
-                              ).distinct('farmers.payout_addr')
+                              ).distinct('farmers.btc_addr')
     distribution = {0: 0, 5: 0, 10: 0, 15: 0, 20: 0, 25: 0, 30: 0, 35: 0, 40: 0,
                     45: 0, 50: 0, 55: 0, 60: 0, 65: 0, 70: 0, 75: 0, 80: 0,
                     85: 0, 90: 0, 95: 0}
@@ -211,7 +211,7 @@ def active_average_uptime(cursor, collection):
     """ 
     begin_date = dt.datetime.now() - timedelta(days=7)
     farmers = collection.find({'time': {'$gte':begin_date}}
-                              ).distinct('farmers.payout_addr')
+                              ).distinct('farmers.btc_addr')
     uptime_percentages = []
     for farmer in farmers:
         cursor.execute('''SELECT (uptime / (last_date - first_date)) * 100
