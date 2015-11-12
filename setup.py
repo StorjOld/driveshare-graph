@@ -1,3 +1,4 @@
+import os
 from setuptools import setup
 
 setup(
@@ -5,7 +6,7 @@ setup(
     description = 'graph of Storj network activity',
     author = 'Andrew Kim', 
     url = 'http://storj.io',
-    install_requires = ['flask','pymongo', 'pygal'],
-    tests_require = ['coverage', 'coveralls'],
+    install_requires = open("requirements.txt").readlines(),
+    tests_require = open("test_requirements.txt").readlines(),
     test_suite = 'tests',
 ) 
