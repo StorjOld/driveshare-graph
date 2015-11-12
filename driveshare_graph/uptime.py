@@ -74,12 +74,12 @@ def address_in_db(cursor, address):
     return True
 
 
-def dt_from_timestamp(timestamp):
+def dt_from_timestamp(timestamp): # pragma: no cover
     datetime = dt.datetime.fromtimestamp(timestamp)
     return datetime
 
 
-def timestamp_from_dt(datetime):
+def timestamp_from_dt(datetime): # pragma: no cover
     timestamp = time.mktime(datetime.timetuple())
     return timestamp
 
@@ -124,7 +124,7 @@ def update_farmers_table(conn, cursor, collection):
     conn.commit()
 
 
-def compute_average_uptime(cursor):
+def compute_average_uptime(cursor): # pragma: no cover
     """Returns the average uptime of a farmer."""  
     cursor.execute('''SELECT avg(100 * uptime / (last_date - first_date)))
                       FROM farmers''')
@@ -132,7 +132,7 @@ def compute_average_uptime(cursor):
     return avg_uptime
 
 
-def add_to_distribution(distribution, value):
+def add_to_distribution(distribution, value): # pragma: no cover
     if value >= 95:
         distribution[95] += 1 
     elif 95 > value >= 90:
