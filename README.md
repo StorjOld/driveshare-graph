@@ -1,16 +1,5 @@
 # driveshare-graph
 
-|BuildLink|_ |CoverageLink|_ |LicenseLink|_ 
-
-.. |BuildLink| image:: https://travis-ci.org/Storj/driveshare-graph.svg?branch=master
-.. _BuildLink: https://travis-ci.org/Storj/driveshare-graph
-
-.. |CoverageLink| image:: https://coveralls.io/repos/Storj/driveshare-graph/badge.svg?branch=master&service=github
-.. _CoverageLink: https://coveralls.io/github/Storj/driveshare-graph?branch=master
-
-.. |LicenseLink| image:: https://img.shields.io/badge/license-MIT-blue.svg
-.. _LicenseLink: https://raw.githubusercontent.com/Storj/driveshare-graph
-
 Go to [graph.driveshare.org](http://graph.driveshare.org) to see network statistics. Built using the Flask framework. MongoDB contains raw data on farmers. Data in MongoDB is collected from the farmers and totalStorage scrapy scripts which are located in the scrapers directory. 
 
 Currently displays:
