@@ -46,6 +46,7 @@ Detach the tmux session (ctrl-b then d) after starting the scrapeAPI script.
 
 Deploy
 ------
+Use gunicorn
 ::
   $ tmux attach -t driveshare-graph
   $ cd project
