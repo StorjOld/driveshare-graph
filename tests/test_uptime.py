@@ -18,7 +18,7 @@ class Uptime(unittest.TestCase):
         self.assertTrue(boolean)
 
     def test_init_farmers_table(self):
-        conn = sqlite3.connect('driveshare_graph.test_network.db')
+        conn = sqlite3.connect('driveshare_graph/test_network.db')
         cursor = conn.cursor()
         client = MongoClient('localhost', 27017)
         collection = client['GroupB']['farmers']
@@ -31,9 +31,17 @@ class Uptime(unittest.TestCase):
         conn.close()
 
     def test_address_in_db(self):
-        conn = sqlite3.connect('driveshare_graph.test_network.db')
+        conn = sqlite3.connect('driveshare_graph/test_network.db')
         cursor = conn.cursor()
         test_address = '16cyAxo1WaR1A1zJbWEz6hiZaiNbhNqoSf'
         self.assertTrue(uptime.address_in_db(cursor, test_address))
         conn.close()
 
+    def test_uptime_distribution(self):
+        conn = sqlite3.connect('driveshare_graph/test_network.db')
+        cursor = conn.cursor()
+        client = MongoClient('localhost', 27017)
+        collection = client['GroupB']['farmers']
+        distribution = uptime_distribution(cursor, collection)
+        self.assertTrue(len(distribution) > 0)
+        conn.close()
