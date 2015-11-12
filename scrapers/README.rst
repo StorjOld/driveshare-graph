@@ -12,16 +12,16 @@ Setup
 How to run on MacOSX:
 ::
 	brew install python git 
-	git clone https://github.com/Andrew-Kim/GroupB-Scripts.git 
-	cd GroupB-Scripts
+	git clone https://github.com/Storj/driveshare-graph.git
+	cd driveshare-graph/scrapers
 	pip install -r requirements.txt
 	./scrapeAPI.sh
 
 How to run on Ubuntu:
 ::
 	apt-get install python git python-pip python-dev build-essential
-	git clone https://github.com/Andrew-Kim/GroupB-Scripts.git
-	cd GroupB-Scripts
+	git clone https://github.com/Storj/driveshare-graph.git
+	cd driveshare-graph/scrapers
 	pip install -r requirements.txt
 	./scrapeAPI.sh
 	
@@ -40,9 +40,11 @@ Connecting to database using python:
 Copying the Database
 ##### 
 
+How to mongodump:
 ::
 	cd ~
 	mongodump --db GroupB
+	
 This creates a directory named dump in the home directory. Copy the dump directory to the machine on which you want to store the GroupB data. On that machine, run the following command in the same directory that the dump directory is located in:
 ::
 	mongorestore dump 
