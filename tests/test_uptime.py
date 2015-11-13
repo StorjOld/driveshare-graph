@@ -19,7 +19,7 @@ class Uptime(unittest.TestCase):
         conn.close()
 
     def test_init_farmers_table(self):
-        conn = sqlite3.connect('driveshare_graph.init_test.db')
+        conn = sqlite3.connect('driveshare_graph/init_test.db')
         cursor = conn.cursor()
         client = MongoClient('localhost', 27017)
         collection = client['GroupB']['farmers']
