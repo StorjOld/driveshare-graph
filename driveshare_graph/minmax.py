@@ -70,13 +70,6 @@ def min_max_farmers(collection):
     return minmax_dict
 
 
-def create_minmax_table(cursor):
-    cursor.execute('''CREATE TABLE minmax
-                      (date           TEXT    PRIMARY KEY   NOT NULL,
-                       min_farmers    INT,
-                       max_farmers);''')
-
-
 def minmax_chart(collection):
     """
     Returns a line graph showing the maximum and minimum

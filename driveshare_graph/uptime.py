@@ -126,7 +126,7 @@ def update_farmers_table(conn, cursor, collection):
 
 def compute_average_uptime(cursor):
     """Returns the average uptime of a farmer."""  
-    cursor.execute('''SELECT avg(100 * uptime / (last_date - first_date)))
+    cursor.execute('''SELECT avg(100 * uptime / (last_date - first_date))
                       FROM farmers''')
     avg_uptime = cursor.fetchone()[0]
     return avg_uptime
