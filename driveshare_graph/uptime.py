@@ -124,7 +124,7 @@ def update_farmers_table(conn, cursor, collection):
     conn.commit()
 
 
-def compute_average_uptime(cursor): # pragma: no cover
+def compute_average_uptime(cursor):
     """Returns the average uptime of a farmer."""  
     cursor.execute('''SELECT avg(100 * uptime / (last_date - first_date)))
                       FROM farmers''')

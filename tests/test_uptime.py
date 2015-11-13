@@ -48,3 +48,11 @@ class Uptime(unittest.TestCase):
         data = cursor.fetchall()
         self.assertTrue(len(data) > 0)
         conn.close()
+
+    def test_average_uptime(self):
+        conn = sqlite3.connect('driveshare_graph/test_network.db')
+        cursor = conn.cursor()
+        avg_uptime = uptime.compute_average_uptime(cursor)
+        self.assertTrue(avg_uptime > 0)
+
+
