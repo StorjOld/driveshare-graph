@@ -12,20 +12,20 @@ class Uptime(unittest.TestCase):
     def test_create_farmers_table(self):
         conn = sqlite3.connect('test.db')
         cursor = conn.cursor()
-        uptime.create_farmers_table(self.conn, self.cursor)
+        uptime.create_farmers_table(conn, cursor)
         dir = os.path.abspath('test.db')
         boolean = os.path.exists(dir)
         self.assertTrue(boolean)
 
     def test_init_farmers_table(self):
-        conn = sqlite3.connect('driveshare_graph/test_network.db')
+        conn = sqlite3.connect('test.db')
         cursor = conn.cursor()
         client = MongoClient('localhost', 27017)
         collection = client['GroupB']['farmers']
         uptime.init_farmers_table(conn, cursor, collection)
         test_date = dt.datetime(2015, 11, 12, 0, 0, 0)
         test_time = float(time.mktime(test_date.timetuple()))
-        cursor.execute('SELECT address FROM farmers WHERE last_date > ?', (test_time))
+        cursor.execute('SELECT address FROM farmers WHERE last_date > ?', (test_time,))
         data = cursor.fetchall()
         self.assertTrue(len(data) > 0)
         conn.close()
@@ -46,5 +46,17 @@ class Uptime(unittest.TestCase):
         self.assertTrue(len(distribution) > 0)
         conn.close()
 
+    def test_update_farmers_table(self):
+        conn = sqlite3.connect('driveshare_graph/test_network.db')
+        cursor = conn.cursor()
+        client = MongoClient('localhost', 27017)
+        collection = client['GroupB']['farmers']
+        uptime.update_farmers_table(conn, cursor, collection)
+        test_date = dt.datetime(2015, 11, 12, 0, 0, 0)
+        test_time = float(time.mktime(test_date.timetuple()))
+        cursor.execute('SELECT address FROM farmers WHERE last_date > ?', (test_time))
+        data = cursor.fetchall()
+        self.assertTrue(len(data) > 0)
+        conn.close()
 
 
