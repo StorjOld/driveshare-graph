@@ -64,7 +64,7 @@ def is_noon_time(dt_time): # pragma: no cover
         return False 
 
 
-def create_stats_table(conn, cursor):
+def create_stats_table(conn, cursor): # pragma: no cover
     cursor.execute('''CREATE TABLE stats
                       (date           REAL    PRIMARY KEY    NOT NULL,
                        tb             REAL,
