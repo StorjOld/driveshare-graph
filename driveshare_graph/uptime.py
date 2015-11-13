@@ -175,7 +175,7 @@ def add_to_distribution(distribution, value): # pragma: no cover
         distribution[0] += 1
 
 
-def uptime_distribution(cursor, collection):
+def uptime_distribution(cursor, collection): # pragma: no cover
     """ 
     Returns the distribution of active farmers' uptimes.
 
@@ -200,7 +200,7 @@ def uptime_distribution(cursor, collection):
             add_to_distribution(distribution, uptime[0])
     return distribution
 
-def active_average_uptime(cursor, collection):
+def active_average_uptime(cursor, collection): # pragma: no cover
     """
     Returns the uptime percentage of the active farmers (farmers
     who have been online in the past week).
@@ -230,7 +230,7 @@ def active_average_uptime(cursor, collection):
     print(len(uptime_percentages))
     return avg
 
-def uptime_histogram(cursor, collection):
+def uptime_histogram(cursor, collection): # pragma: no cover
     histogram_title = 'Histogram of Active Farmers Uptime Percentages'
     uptime_histogram = pygal.Histogram(width=1000, height=600,
                                        explicit_size=True,

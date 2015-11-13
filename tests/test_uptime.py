@@ -23,6 +23,7 @@ class Uptime(unittest.TestCase):
         cursor = conn.cursor()
         client = MongoClient('localhost', 27017)
         collection = client['GroupB']['farmers']
+        uptime.create_farmers_table(conn, cursor)
         uptime.init_farmers_table(conn, cursor, collection)
         cursor.execute('SELECT * FROM farmers')
         data = cursor.fetchall()
@@ -34,15 +35,6 @@ class Uptime(unittest.TestCase):
         cursor = conn.cursor()
         test_address = '16cyAxo1WaR1A1zJbWEz6hiZaiNbhNqoSf'
         self.assertTrue(uptime.address_in_db(cursor, test_address))
-        conn.close()
-
-    def test_uptime_distribution(self):
-        conn = sqlite3.connect('driveshare_graph/test_network.db')
-        cursor = conn.cursor()
-        client = MongoClient('localhost', 27017)
-        collection = client['GroupB']['farmers']
-        distribution = uptime.uptime_distribution(cursor, collection)
-        self.assertTrue(len(distribution) > 0)
         conn.close()
 
     def test_update_farmers_table(self):
@@ -57,7 +49,3 @@ class Uptime(unittest.TestCase):
         data = cursor.fetchall()
         self.assertTrue(len(data) > 0)
         conn.close()
-    #
-    # def test_uptime_histogram(self):
-    #     self.
-
