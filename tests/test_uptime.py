@@ -30,7 +30,7 @@ class Uptime(unittest.TestCase):
         conn.close()
 
     def test_address_in_db(self):
-        conn = sqlite3.connect('tests/init_test_network.db')
+        conn = sqlite3.connect('tests/test_network.db')
         cursor = conn.cursor()
         test_address = '16cyAxo1WaR1A1zJbWEz6hiZaiNbhNqoSf'
         self.assertTrue(uptime.address_in_db(cursor, test_address))

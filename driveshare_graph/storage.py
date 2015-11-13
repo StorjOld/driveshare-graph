@@ -84,7 +84,7 @@ def init_stats_table(conn, cursor, collection):
 
 
 def update_stats_table(conn, cursor, collection):
-    cursor.execute('SELECT MAX(time) from stats')
+    cursor.execute('SELECT MAX(date) from stats')
     last_date = dt.datetime.fromtimestamp(int(cursor.fetchone()[0]))
     for doc in collection.find({'time': {'$gt': last_date}}):
         tb = doc['total_TB']
