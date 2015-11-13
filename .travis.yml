@@ -10,8 +10,8 @@ services:
   - mongodb
 
 before_script: 
- - mongorestore farmer_dump
- - mongorestore storage_dump
+ - mongorestore --port 27017 --db GroupB farmer_dump/GroupB
+ - mongorestore --port 27017 --db GroupB storage_dump/GroupB
 
 script:
   - coverage run --source="driveshare_graph" setup.py test
