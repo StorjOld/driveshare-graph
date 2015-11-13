@@ -25,9 +25,9 @@ class Uptime(unittest.TestCase):
         collection = client['GroupB']['farmers']
         uptime.create_farmers_table(conn, cursor)
         uptime.init_farmers_table(conn, cursor, collection)
-        cursor.execute('SELECT * FROM farmers')
-        data = cursor.fetchall()
-        self.assertTrue(len(data) > 0)
+        cursor.execute('SELECT uptime FROM farmers')
+        data = cursor.fetchone()[0]
+        self.assertTrue(data > 0)
         conn.close()
 
     def test_address_in_db(self):
