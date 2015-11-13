@@ -8,7 +8,7 @@ from datetime import timedelta
 
 # Used for storage collection
 
-def first_date(collection):
+def first_date(collection): # pragma: no cover
     """Returns the first date in the collection"""
     for doc in collection.find({}, {'time': 1, '_id': 0}
                                ).sort('time', 1).limit(1):
@@ -16,7 +16,7 @@ def first_date(collection):
     return begin_date
 
 
-def last_date(collection):
+def last_date(collection): # pragma: no cover
     """Returns the first date in the collection"""
     for doc in collection.find({}, {'time': 1, '_id': 0}
                                ).sort('time', -1).limit(1):
@@ -24,7 +24,7 @@ def last_date(collection):
     return last_date
 
 
-def min_farmers_date(collection, date):
+def min_farmers_date(collection, date): # pragma: no cover
     """Returns the minimum number of farmers online during
     the specified date."""
     next_date = date + timedelta(days=1)
@@ -36,7 +36,7 @@ def min_farmers_date(collection, date):
     return min_farmers
 
 
-def max_farmers_date(collection, date):
+def max_farmers_date(collection, date): #pragma: no cover
     """Returns the minimum number of farmers online during
     the specified date."""
     next_date = date + timedelta(days=1)
