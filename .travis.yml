@@ -10,7 +10,7 @@ services:
   - mongodb
 
 before_script: 
- - mongorestore --port 27017 --db GroupB farmer_dump/GroupB
+ - mongorestore --port 27017 --db GroupB dump/GroupB
  - mongorestore --port 27017 --db GroupB storage_dump/GroupB
 
 script:
