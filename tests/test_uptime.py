@@ -19,10 +19,11 @@ class Uptime(unittest.TestCase):
         conn.close()
 
     def test_init_farmers_table(self):
-        conn = sqlite3.connect('test.db')
+        conn = sqlite3.connect('init_test.db')
         cursor = conn.cursor()
         client = MongoClient('localhost', 27017)
         collection = client['GroupB']['farmers']
+        uptime.create_farmers_table(conn, cursor)
         uptime.init_farmers_table(conn, cursor, collection)
         cursor.execute('SELECT * FROM farmers')
         data = cursor.fetchall()
