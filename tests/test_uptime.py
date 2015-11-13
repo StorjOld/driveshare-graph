@@ -23,7 +23,6 @@ class Uptime(unittest.TestCase):
         cursor = conn.cursor()
         client = MongoClient('localhost', 27017)
         collection = client['GroupB']['farmers']
-        uptime.create_farmers_table(conn, cursor)
         uptime.init_farmers_table(conn, cursor, collection)
         cursor.execute('SELECT * FROM farmers')
         data = cursor.fetchall()
