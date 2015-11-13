@@ -1,5 +1,6 @@
 import unittest
 import pygal
+from pymongo import MongoClient
 import driveshare_graph.minmax as minmax
 
 class MinMax(unittest.TestCase):
