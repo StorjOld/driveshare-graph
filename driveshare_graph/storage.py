@@ -10,7 +10,7 @@ from pygal.style import BlueStyle
 
 # as the dataset grows larger these methods will take too long
 # in the future, may want to use "group by" equivalent and use map-reduce
-def max_tb(collection):
+def max_tb(collection): # pragma: no cover
     """Returns the maximum number of TB recorded in the collection"""
     max_TB = 0
     for doc in collection.find({}).sort([('total_TB',-1)]).limit(1):
@@ -18,7 +18,7 @@ def max_tb(collection):
     return max_TB
 
 
-def min_tb(collection):
+def min_tb(collection): # pragma: no cover
     """Returns the minimum number of TB recorded in the collection"""
     min_TB = 0
     for doc in collection.find({}).sort([('total_TB',1)]).limit(1):
@@ -26,7 +26,7 @@ def min_tb(collection):
     return min_TB
 
 
-def min_farmers(collection):
+def min_farmers(collection): # pragma: no cover
     """Returns the minimum number of farmers recorded in the collection"""
     min_farmers = 0
     for doc in collection.find({}).sort([('total_farmers',1)]).limit(1):
@@ -34,7 +34,7 @@ def min_farmers(collection):
     return min_farmers
 
 
-def max_farmers(collection):
+def max_farmers(collection): # pragma: no cover
     """Returns the maximum number of farmers recorded in the collection"""
     max_farmers = 0
     for doc in collection.find({}).sort([('total_farmers',-1)]).limit(1):
@@ -51,7 +51,7 @@ def avg_gb_farmer(collection):
     return avg_gb_farmer
 
 
-def is_noon_time(dt_time):
+def is_noon_time(dt_time): # pragma: no cover
     """
     Returns True if the time is between 12:00-12:05, False otherwise.
     
