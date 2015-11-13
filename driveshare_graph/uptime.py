@@ -20,7 +20,7 @@ def create_farmers_table(conn, cursor):
     conn.commit()
 
 
-def create_time_index(collection):
+def create_time_index(collection): # pragma: no cover
     time_index = IndexModel([('time', ASCENDING)])
     collection.create_indexes([time_index])
 
