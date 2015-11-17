@@ -7,6 +7,7 @@ import storage
 import sqlite3
 import uptime
 import minmax
+import farmer_summary
 
 
 app = Flask(__name__)
@@ -54,6 +55,15 @@ def daily_data():
             json_totals.append(total)
     json_totals = json.dumps(json_totals, default=json_util.default)
     return json_totals
+
+
+@app.route("/api/summary/<btc_addr>")
+def api_summary(btc_addr):
+    conn = sqlite3.connect('summary.db')
+    cursor = conn.cursor()
+    json_summary = farmer_summary.json_month_summary(conn, cursor, btc_addr)
+    return json_summary
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
