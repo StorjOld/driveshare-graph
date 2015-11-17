@@ -13,7 +13,8 @@ driveshare-graph
 .. |LicenseLink| image:: https://img.shields.io/badge/license-MIT-blue.svg
 .. _LicenseLink: https://raw.githubusercontent.com/Storj/sjcx-payments
 
-Network Stats
+Network Stats: 
+
 Go to http://graph.driveshare.org to see network statistics. Built using the Flask framework. MongoDB contains raw data on farmers. Data in MongoDB is collected from the farmers and totalStorage scrapy scripts which are located in the scrapers directory. 
 
 Currently displays:
@@ -25,7 +26,8 @@ Currently displays:
 * histogram of active farmers' uptime percentages (active farmers are farmers who have been seen on the network in the past week)
 * average uptime percentage of active farmers
 
-API
+API: 
+
 Go to http://graph.driveshare.org/api/summary/<btc_addr> to see daily summaries for the build with the specified btc address over the past 30 days. 
 
 
