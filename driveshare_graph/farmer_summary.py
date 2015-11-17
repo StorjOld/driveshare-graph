@@ -211,30 +211,31 @@ def end_date(farmers_collection): # pragma: no cover
 def json_month_summary(cursor, btc_addr):
     """Return json summary for btc_addr in the past month"""
     summaries = []
-    current_date = dt.datetime.now() - timedelta(days = 30)
+    current_date = dt.datetime.now() - timedelta(days = 1)
     last_date = dt.datetime(current_date.year, current_date.month, current_date.day, 0, 0, 0)
-    first_date = last_date - timedelta(days = 1)
+    first_date = last_date - timedelta(days = 30)
     day_count = (last_date - first_date).days + 1
     for single_date in (first_date + timedelta(days=n) for n in range(day_count)):
         cursor.execute('SELECT date, uptime, duration, height, points FROM summaries '
                        'WHERE auth_address = ? AND date = ?', (str(btc_addr), str(single_date),))
         data = cursor.fetchone()
-        date = data[0]
-        uptime = data[1]
-        duration = data[2]
-        height = data[3]
-        points = data[4]
-        cursor.execute('SELECT SUM(points) FROM summaries WHERE date = ?', (str(single_date),))
-        total_points = cursor.fetchone()[0]
-        summary_as_dict = {
-            'date': date,
-            'uptime': uptime,
-            'duration': duration,
-            'height': height,
-            'points': points,
-            'total_points': total_points
-        }
-        summaries.append(summary_as_dict)
+        if (len(data) > 0):
+            date = data[0]
+            uptime = data[1]
+            duration = data[2]
+            height = data[3]
+            points = data[4]
+            cursor.execute('SELECT SUM(points) FROM summaries WHERE date = ?', (str(single_date),))
+            total_points = cursor.fetchone()[0]
+            summary_as_dict = {
+                'date': date,
+                'uptime': uptime,
+                'duration': duration,
+                'height': height,
+                'points': points,
+                'total_points': total_points
+            }
+            summaries.append(summary_as_dict)
     return simplejson.dumps(summaries)
 
 

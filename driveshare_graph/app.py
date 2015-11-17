@@ -61,7 +61,7 @@ def daily_data():
 def api_summary(btc_addr):
     conn = sqlite3.connect('summary.db')
     cursor = conn.cursor()
-    json_summary = farmer_summary.json_month_summary(conn, cursor, btc_addr)
+    json_summary = farmer_summary.json_month_summary(cursor, btc_addr)
     return json_summary
 
 
