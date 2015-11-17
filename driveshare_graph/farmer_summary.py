@@ -45,7 +45,7 @@ def update_table(conn, cursor, collection): # pragma: no cover
     """Updates the summaries table if there is new data in collection."""
     cursor.execute('SELECT MAX(date) FROM summaries')
     date = cursor.fetchone()[0]
-    max_date = dt.strptime(date,  '%Y-%M-%D %H:%M:%S')
+    max_date = dt.datetime.strptime(date,  '%Y-%m-%d %H:%M:%S')
     next_date = max_date + timedelta(days = 1)
     last_date = end_date(collection)
     day_count = (last_date - next_date).days
@@ -219,7 +219,7 @@ def json_month_summary(cursor, btc_addr):
         cursor.execute('SELECT date, uptime, duration, height, points FROM summaries '
                        'WHERE auth_address = ? AND date = ?', (str(btc_addr), str(single_date),))
         data = cursor.fetchone()
-        if (len(data) > 0):
+        if (data is not None):
             date = data[0]
             uptime = data[1]
             duration = data[2]

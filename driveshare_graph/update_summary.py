@@ -11,3 +11,5 @@ while(True):
     collection = client['GroupB']['farmers']
     farmer_summary.update_table(conn, cursor, collection)
     sleep(86400)
+    conn.close()
+
