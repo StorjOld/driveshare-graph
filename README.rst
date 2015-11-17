@@ -61,15 +61,22 @@ Use gunicorn
   $ gunicorn -b 0.0.0.0:80 --workers=4 app:app
 Detach the tmux session after running gunicorn.
 
-Then, create a new tmux session that will update the network.db.
+Create a new tmux session that will update network.db.
 ::
   $ tmux attach -t updateSQL
-  $ cd project
   $ python updateSQL.py
 Detach the tmux session after beginning the updateSQL script. 
+
+Create a new tmux session that will update summary.db. 
+::
+  $ tmux attach -t updatesummary
+  $ python updatesummary.py
+This will update summary.db every 24 hours. Detach the tmux session after beginning the script. 
 
 Databases
 =========
 
 network.db in the project directory is a sqlite database. The farmers table contains duration and uptime information for each payout address. updateSQL.py updates the network.db every 30 seconds. MongoDB queries take a lot of time to execute, so the farmers table is used to generate the uptime histogram and average uptime percentage. 
+
+summary.db in the project directory is a sqlite database. The summaries table contains daily summaries (uptime, duration, height, assigned points) for each build / authentication address. 
 
