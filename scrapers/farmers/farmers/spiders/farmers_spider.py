@@ -5,7 +5,7 @@ import datetime
 
 class FarmerSpider(Spider):
 	name = "farmer"
-	allowed_domains = ["switch.driveshare.org"]
+	allowed_domains = ["status.driveshare.org"]
 	start_urls = [
 		"http://status.driveshare.org/api/online/json"
 	]
