@@ -1,10 +1,10 @@
 ########
 GroupB-Scripts
 ########
-Scrapy scripts to scrape TestGroup-B data from switch.driveshare.org/api/total and switch.driveshare.org/api/json into a MongoDB. The sites are crawled every 5 minutes. The data will be used to generate metrics for TestGroup-B. 
+Scrapy scripts to scrape TestGroup-B data from status.driveshare.org/api/total and status.driveshare.org/api/json into a MongoDB. The sites are crawled every 5 minutes. The data will be used to generate metrics for TestGroup-B. 
 
-Data from switch.driveshare.org/api/json is stored into the farmers collection in the GroupB database.
-Data from switch.driveshare.org/api/total is stored into the totalStorage collection in the GroupB database. 
+Data from status.driveshare.org/api/json is stored into the farmers collection in the GroupB database.
+Data from status.driveshare.org/api/total is stored into the totalStorage collection in the GroupB database. 
 
 #####
 Setup
