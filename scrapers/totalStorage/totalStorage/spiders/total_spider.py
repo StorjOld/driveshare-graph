@@ -1,3 +1,4 @@
+import os
 from scrapy import Spider
 from totalStorage.items import TotalStorageItem
 import json
