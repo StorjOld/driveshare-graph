@@ -3,11 +3,15 @@ from totalStorage.items import TotalStorageItem
 import json
 import datetime
 
+
+HOST = os.environ.get("DATASERV_HOST", "status.driveshare.org")
+
+
 class TotalSpider(Spider):
 	name = "total"
-	allowed_domains = ["status.driveshare.org"]
+	allowed_domains = [HOST]
 	start_urls = [
-		"http://status.driveshare.org/api/total"
+		"http://{0}/api/total".format(HOST)
 	]
 
 	def parse(self, response):

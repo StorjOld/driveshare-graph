@@ -12,8 +12,10 @@ services:
 before_script: 
  - mongorestore --port 27017 --db GroupB tests/dump/GroupB
  - mongorestore --port 27017 --db GroupB tests/storage_dump/GroupB
+ - bash travis_setup.sh
 
 script:
+  - export DATASERV_HOST="127.0.0.1:5000"
   - coverage run --source="driveshare_graph" setup.py test
 
 after_success:
