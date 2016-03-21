@@ -39,7 +39,7 @@ Setup
 -----
 Install required packages
 ::
-  $ sudo apt-get install git sqlite3 mongodb gunicorn tmux python-pip python-dev libxml2-dev libxslt1-dev zlib1g-dev
+  $ sudo apt-get install git sqlite3 mongodb tmux python-pip python-dev libxml2-dev libxslt1-dev zlib1g-dev
   $ git clone https://github.com/Storj/driveshare-graph.git
   $ cd driveshare-graph
   $ pip install -r requirements.txt
@@ -58,7 +58,7 @@ Deploy
 Use gunicorn
 ::
   $ tmux attach -t driveshare-graph
-  $ cd driveshare-graph/driveshare-graph
+  $ cd driveshare-graph/driveshare_graph
   $ gunicorn -b 0.0.0.0:80 --workers=4 app:app
 Detach the tmux session after running gunicorn.
 
