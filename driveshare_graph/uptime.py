@@ -52,7 +52,7 @@ def init_farmers_table(conn, cursor, collection):
                 uptimes[btc_address] = 0
         previous_time = doc_time
 
-    for key, value in first_dates.iteritems():
+    for key, value in first_dates.items():
         address = key
         first_date = value
         last_date = last_dates[key]
@@ -239,7 +239,7 @@ def uptime_histogram(cursor, collection): # pragma: no cover
                                        xrange=(0, 100),
                                        disable_xml_declaration=True)
     distribution = uptime_distribution(cursor, collection)
-    for key, value in distribution.iteritems():
+    for key, value in distribution.items():
         bucket = '%i%% to %i%%' % (key, key+5)
         uptime_histogram.add(bucket, [(value, key, key+5)])
     return uptime_histogram

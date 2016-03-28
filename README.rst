@@ -39,9 +39,9 @@ Setup
 -----
 Install required packages
 ::
+  $ sudo apt-get install git sqlite3 mongodb tmux python-pip python-dev libxml2-dev libxslt1-dev zlib1g-dev
   $ git clone https://github.com/Storj/driveshare-graph.git
   $ cd driveshare-graph
-  $ sudo apt-get install sqlite3 gunicorn tmux python-pip
   $ pip install -r requirements.txt
 
 MongoDB Setup
@@ -49,7 +49,7 @@ MongoDB Setup
 For instructions on how to migrate/copy the existing MongoDB, look at the README in the scrapers folder. After restoring the MongoDB on a machine, run the scrapers in order to continue collecting data on farmers.
 ::
   $ tmux attach -t crawler
-  $ cd ~/driveshare-graph/scrapers
+  $ cd driveshare-graph/scrapers
   $ ./scrapeAPI.sh
 Detach the tmux session (ctrl-b then d) after starting the scrapeAPI script.
 
@@ -58,7 +58,7 @@ Deploy
 Use gunicorn
 ::
   $ tmux attach -t driveshare-graph
-  $ cd project
+  $ cd driveshare-graph/driveshare_graph
   $ gunicorn -b 0.0.0.0:80 --workers=4 app:app
 Detach the tmux session after running gunicorn.
 
@@ -71,7 +71,7 @@ Detach the tmux session after beginning the updateSQL script.
 Create a new tmux session that will update summary.db.
 ::
   $ tmux attach -t updatesummary
-  $ python updatesummary.py
+  $ python update_summary.py
 This will update summary.db every 24 hours. Detach the tmux session after beginning the script.
 
 Databases

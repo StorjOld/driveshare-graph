@@ -87,7 +87,7 @@ def minmax_chart(collection):
     dates = []
     min_counts = []
     max_counts = []
-    for key in minmax_dict.iterkeys():
+    for key in minmax_dict.keys():
         dates.append(key)
     dates.sort()
     for date in dates:
